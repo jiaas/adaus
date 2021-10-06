@@ -17,7 +17,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Onboardiing'),
+            Text('Onboarding'),
             Container(
               width: 180,
               height: 60,

@@ -18,8 +18,31 @@ class _RouterPageState extends State<RouterPage>
 
     if (_seen) {
       //seen es true entonces ya había entrado a la app y debo redirigirlo
-      //TODO: Aqui debo validar la sesion
-      Get.off(() => OnboardingPage());
+      //TODO: Aqui debo validar la session
+      /*var session = null;
+
+      var proximaPagina = null;
+
+      if (session != null) {
+        session = true;
+      } else {
+        session = false;
+      }
+
+      switch (session) {
+        case true:
+          proximaPagina = 'LandingPage()';
+          break;
+        case false:
+          proximaPagina = 'LoginOrRegistrationPage()';
+          break;
+        default:
+          proximaPagina = 'LoginOrRegistrationPage()';
+          break;
+      }
+      Get.off(() => proximaPagina);
+      */
+      Get.off(() => SignInPage());
     } else {
       //Si es false entonces es la primera vez que abre la app
       await prefs.setBool('seen',
