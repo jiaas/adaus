@@ -17,18 +17,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Onboarding'),
-            Container(
+            const Text('Onboarding'),
+            SizedBox(
               width: 180,
               height: 60,
               child: TextButton(
                 onPressed: () {
                   //Get.to(OnboardingCarousel());
-                  print('asd');
                   Get.off(const SignInPage());
                   //Get.to(SignInPage());
                 },
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Get Started',
                   ),
