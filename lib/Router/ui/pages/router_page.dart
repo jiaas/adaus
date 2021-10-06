@@ -1,5 +1,5 @@
 import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
-import 'package:adaus/Session/pages/login_page.dart';
+import 'package:adaus/Session/ui/pages/login_page.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
