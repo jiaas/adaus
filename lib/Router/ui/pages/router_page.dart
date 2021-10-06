@@ -2,6 +2,7 @@ import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
 import 'package:adaus/Session/pages/login_page.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RouterPage extends StatefulWidget {
@@ -18,22 +19,12 @@ class _RouterPageState extends State<RouterPage>
     if (_seen) {
       //seen es true entonces ya había entrado a la app y debo redirigirlo
       //TODO: Aqui debo validar la sesion
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => SignInPage(),
-        ),
-      );
+      Get.off(() => OnboardingPage());
     } else {
       //Si es false entonces es la primera vez que abre la app
       await prefs.setBool('seen',
           true); // seen queda como true y la próxima vez entrará al bloque de arriba.
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => OnboardingPage(),
-        ),
-      );
+      Get.off(() => OnboardingPage());
     }
   }
 

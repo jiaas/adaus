@@ -1,4 +1,6 @@
+import 'package:adaus/Session/pages/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -12,7 +14,29 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Onboarding'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Onboardiing'),
+            Container(
+              width: 180,
+              height: 60,
+              child: TextButton(
+                onPressed: () {
+                  //Get.to(OnboardingCarousel());
+                  print('asd');
+                  Get.off(SignInPage());
+                  //Get.to(SignInPage());
+                },
+                child: Center(
+                  child: Text(
+                    'Get Started',
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
