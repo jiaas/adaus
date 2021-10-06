@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'Router/ui/pages/router_page.dart';
 
 void main() {
-  runApp(RouterApp());
+  runApp(MyApp());
 }
 
-
-
-
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'adaus',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: RouterPage());
+  }
+}
