@@ -1,3 +1,5 @@
+import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
+import 'package:adaus/Session/pages/login_page.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,17 +16,12 @@ class _RouterPageState extends State<RouterPage>
     bool _seen = (prefs.getBool('seen') ?? false); // seen queda como false
 
     if (_seen) {
-      //Si es true entonces ya había entrado a la app
+      //seen es true entonces ya había entrado a la app y debo redirigirlo
+      //TODO: Aqui debo validar la sesion
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Column(
-              children: [
-                Text('You have been here before'),
-              ],
-            ),
-          ),
+          builder: (_) => SignInPage(),
         ),
       );
     } else {
@@ -34,13 +31,7 @@ class _RouterPageState extends State<RouterPage>
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Column(
-              children: [
-                Text('This is your first time'),
-              ],
-            ),
-          ),
+          builder: (_) => OnboardingPage(),
         ),
       );
     }
