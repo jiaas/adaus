@@ -1,8 +1,7 @@
-import 'package:adaus/Landing/ui/pages/landing_page.dart';
+import 'package:adaus/Layout/ui/pages/layout_page.dart';
 import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
-import 'package:adaus/Session/ui/pages/login_page.dart';
+import 'package:adaus/Session/ui/pages/session_page.dart';
 import 'package:after_layout/after_layout.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,13 +21,12 @@ class _RouterPageState extends State<RouterPage>
 
     if (_seen) {
       //seen es true entonces ya había entrado a la app y debo redirigirlo
-      final FirebaseAuth auth = FirebaseAuth.instance;
 
       FirebaseAuth.instance.authStateChanges().listen((User? user) async {
         if (user == null) {
-          await Get.off(() => const SignInPage());
+          await Get.off(() => const SessionPage());
         } else {
-          await Get.off(() => const LandingPage());
+          await Get.off(() => const LayoutPage());
         }
       });
     } else {

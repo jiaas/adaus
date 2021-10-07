@@ -1,4 +1,4 @@
-import 'package:adaus/Session/ui/pages/login_page.dart';
+import 'package:adaus/Session/ui/pages/session_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +24,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               child: TextButton(
                 onPressed: () {
                   //Get.to(OnboardingCarousel());
-                  Get.off(const SignInPage());
+                  Get.off(const SessionPage());
                   //Get.to(SignInPage());
                 },
                 child: const Center(
