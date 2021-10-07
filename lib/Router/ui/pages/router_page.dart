@@ -1,9 +1,13 @@
+import 'package:adaus/Landing/ui/pages/landing_page.dart';
 import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
 import 'package:adaus/Session/ui/pages/login_page.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RouterPage extends StatefulWidget {
   @override
@@ -18,32 +22,15 @@ class _RouterPageState extends State<RouterPage>
 
     if (_seen) {
       //seen es true entonces ya había entrado a la app y debo redirigirlo
-      // ignore: todo
-      //TODO: Aqui debo validar la session
-      /*var session = null;
+      final FirebaseAuth auth = FirebaseAuth.instance;
 
-      var proximaPagina = null;
-
-      if (session != null) {
-        session = true;
-      } else {
-        session = false;
-      }
-
-      switch (session) {
-        case true:
-          proximaPagina = 'LandingPage()';
-          break;
-        case false:
-          proximaPagina = 'LoginOrRegistrationPage()';
-          break;
-        default:
-          proximaPagina = 'LoginOrRegistrationPage()';
-          break;
-      }
-      Get.off(() => proximaPagina);
-      */
-      await Get.off(() => const SignInPage());
+      FirebaseAuth.instance.authStateChanges().listen((User? user) async {
+        if (user == null) {
+          await Get.off(() => const SignInPage());
+        } else {
+          await Get.off(() => const LandingPage());
+        }
+      });
     } else {
       //Si es false entonces es la primera vez que abre la app
       await prefs.setBool('seen',
