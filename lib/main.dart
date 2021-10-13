@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:adaus/Router/ui/pages/router_page.dart';
+import 'package:sizer/sizer.dart';
 
 // Import the firebase_core plugin
 void main() {
@@ -38,13 +39,12 @@ class _AppState extends State<App> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return GetMaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'adaus',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              home: RouterPage());
+          return Sizer(builder: (context, orientation, deviceType) {
+            return GetMaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'Adaus',
+                home: RouterPage());
+          });
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
