@@ -17,7 +17,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Onboarding'),
+            const Text('Bienvenido al Onboarding'),
             SizedBox(
               width: 180,
               height: 60,
@@ -29,7 +29,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 },
                 child: const Center(
                   child: Text(
-                    'Get Started',
+                    'Inicia la aplicación.',
                   ),
                 ),
               ),

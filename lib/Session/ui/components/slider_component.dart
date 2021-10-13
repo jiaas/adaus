@@ -12,7 +12,7 @@ class _SliderComponentState extends State<SliderComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.0.h,
+      height: 65.0.h,
       width: 100.0.w,
       color: Colors.black,
     );

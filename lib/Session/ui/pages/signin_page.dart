@@ -5,6 +5,10 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Sign In');
+    return const Scaffold(
+      body: Center(
+        child: Text('Inicia Sesion.'),
+      ),
+    );
   }
 }

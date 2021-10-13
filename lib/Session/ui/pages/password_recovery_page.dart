@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class PasswordRecoveryPage extends StatelessWidget {
+  const PasswordRecoveryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Solicita una cuenta.'),
+        child: Text('Recupera tu cuenta.'),
       ),
     );
   }
