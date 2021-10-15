@@ -1,7 +1,8 @@
+import 'package:adaus/Router/ui/pages/router_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:adaus/Router/ui/pages/router_page.dart';
 import 'package:sizer/sizer.dart';
 
 // Import the firebase_core plugin
@@ -28,6 +29,16 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      ),
+    );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return FutureBuilder(
       // Initialize FlutterFire:
       future: _initialization,
@@ -39,12 +50,15 @@ class _AppState extends State<App> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return Sizer(builder: (context, orientation, deviceType) {
-            return GetMaterialApp(
+          return Sizer(
+            builder: (context, orientation, deviceType) {
+              return GetMaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Adaus',
-                home: RouterPage());
-          });
+                home: RouterPage(),
+              );
+            },
+          );
         }
 
         // Otherwise, show something whilst waiting for initialization to complete

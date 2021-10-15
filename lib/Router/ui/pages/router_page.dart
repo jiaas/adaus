@@ -2,11 +2,10 @@ import 'package:adaus/Layout/ui/pages/layout_page.dart';
 import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
 import 'package:adaus/Session/ui/pages/session_page.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
 
 class RouterPage extends StatefulWidget {
   @override
@@ -31,8 +30,10 @@ class _RouterPageState extends State<RouterPage>
       });
     } else {
       //Si es false entonces es la primera vez que abre la app
-      await prefs.setBool('seen',
-          true); // seen queda como true y la próxima vez entrará al bloque de arriba.
+      await prefs.setBool(
+        'seen',
+        true,
+      ); // seen queda como true y la próxima vez entrará al bloque de arriba.
       await Get.off(() => const OnboardingPage());
     }
   }
