@@ -38,19 +38,18 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 3.0.h),
+        padding: EdgeInsets.symmetric(horizontal: 5.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SafeArea(child: SizedBox(height: 0)),
-
+            SafeArea(child: SizedBox(height: 2.0.h)),
             customText(
               context,
               "Introduce tu número de teléfono para comenzar",
               "t1.black",
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 2.0.h,
             ),
             customText(
               context,
@@ -59,7 +58,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
             ),
 
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.symmetric(vertical: 4.0.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -165,7 +164,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
 
                 onPressed: () {
                   //Implement registration functionality.
-                  Get.to(() => const LayoutPage());
+                  Get.offAll(const LayoutPage());
                 },
                 color: const Color(0xFF0769f8),
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),

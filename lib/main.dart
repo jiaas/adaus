@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter/cupertino.dart';
 
 // Import the firebase_core plugin
 void main() {
@@ -54,12 +55,17 @@ class _AppState extends State<App> {
           return Sizer(
             builder: (context, orientation, deviceType) {
               return GetMaterialApp(
+                defaultTransition: Transition.cupertino,
                 debugShowCheckedModeBanner: false,
                 title: 'Adaus',
                 home: RouterPage(),
               );
+
+
             },
           );
+
+
         }
 
         // Otherwise, show something whilst waiting for initialization to complete

@@ -38,11 +38,11 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 3.0.h),
+        padding: EdgeInsets.symmetric(horizontal: 5.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SafeArea(child: SizedBox(height: 0)),
+            SafeArea(child: SizedBox(height: 2.0.h)),
             customText(
               context,
               "Introduce tu número de teléfono para comenzar",
@@ -83,7 +83,6 @@ class _SignUpPageState extends State<SignUpPage> {
              height: 3.0.h,
            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
                   width: 25.0.w,
@@ -101,8 +100,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
+                SizedBox(width: 5.0.w,),
                 SizedBox(
-                  width: 51.0.w,
+                  width: 60.0.w,
                   child: TextField(
                     controller: numeroTelefonoController,
                     maxLength: 11,
