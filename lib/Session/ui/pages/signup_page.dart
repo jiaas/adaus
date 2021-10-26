@@ -1,12 +1,12 @@
 import 'package:adaus/Global/ui/components/image_component.dart';
+import 'package:adaus/Layout/ui/pages/layout_page.dart';
+import 'package:adaus/Session/ui/pages/verification_code_page.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:adaus/Global/ui/components/text_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-
-const List<DropdownMenuItem<String>> paises = [];
-
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -38,29 +38,26 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.symmetric(horizontal: 3.0.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SafeArea(child: SizedBox(height: 10)),
-            const SizedBox(
-              height: 50,
-            ),
+            const SafeArea(child: SizedBox(height: 0)),
             customText(
               context,
               "Introduce tu número de teléfono para comenzar",
               "t1.black",
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 2.0.h,
             ),
             customText(
               context,
-              "Recibirás un código de verificación SMS. Se aplican las tarifas de tu operador.",
+              "Asegurate de que puedes recibir un SMS. Se aplican las tarifas de tu operador.",
               "s1.black",
             ),
-            const SizedBox(
-              height: 48.0,
+            SizedBox(
+              height: 2.5.h,
             ),
             SizedBox(
               width: 30.0.w,
@@ -68,7 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 style: TextStyle(fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'SF',),
-                readOnly: true,
+                enabled: false,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -86,14 +83,15 @@ class _SignUpPageState extends State<SignUpPage> {
              height: 3.0.h,
            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 30.0.w,
+                  width: 25.0.w,
                   child: const TextField(
                     style: TextStyle(fontSize: 20,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'SF',),
-                    readOnly: true,
+                    enabled: false,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -102,9 +100,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       prefixIcon: Icon(Icons.add_circle_outline_sharp, size: 18,),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 30,
                 ),
                 SizedBox(
                   width: 51.0.w,
@@ -143,6 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 onPressed: () {
                   //Implement registration functionality.
+                  Get.to(() => const VerificationCodePage());
                 },
                 color: const Color(0xFF0769f8),
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
@@ -153,6 +149,22 @@ class _SignUpPageState extends State<SignUpPage> {
                   "CONTINUAR",
                   "t2.white",
                 ),
+              ),
+            ),
+            RichText(
+              text: TextSpan(
+                text: 'Al continuar aceptas los',
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(fontSize: 1.5.h, fontFamily: 'SF',
+                color: Colors.grey),
+                children: const <TextSpan>[
+                  TextSpan(text: ' Términos y condiciones de uso', style: TextStyle(decoration: TextDecoration.underline),),
+                  TextSpan(text: ' y la'),
+                  TextSpan(text: ' Política de privacidad', style: TextStyle(decoration: TextDecoration.underline),),
+                  TextSpan(text: ' de ADAUS.'),
+                ],
               ),
             ),
           ],

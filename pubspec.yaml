@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   after_layout: ^1.1.0
+  cloud_firestore: ^2.5.4
   extended_masked_text: ^2.3.1
   firebase_auth: "^3.1.2"
   firebase_core: "^1.7.0"

@@ -50,9 +50,10 @@ TextStyle? _customTextStyle(BuildContext context, String textStyle) {
         style = Theme.of(context)
             .textTheme
             .subtitle2!
-            .copyWith(fontSize: 1.4.h, fontFamily: 'SF');
+            .copyWith(fontSize: 1.3.h, fontFamily: 'SF');
       }
       break;
+
   }
 
   //endregion
