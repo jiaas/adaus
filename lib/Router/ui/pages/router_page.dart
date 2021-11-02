@@ -1,6 +1,6 @@
 import 'package:adaus/Layout/ui/pages/layout_page.dart';
 import 'package:adaus/Onboarding/ui/pages/onboarding_page.dart';
-import 'package:adaus/Session/ui/pages/session_page.dart';
+import 'package:adaus/Session/ui/pages/signup_page.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _RouterPageState extends State<RouterPage>
 
       FirebaseAuth.instance.authStateChanges().listen((User? user) async {
         if (user == null) {
-          await Get.off(() => const SessionPage());
+          await Get.off(() => const SignUpPage());
         } else {
           await Get.off(() => const LayoutPage());
         }

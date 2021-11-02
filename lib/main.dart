@@ -1,9 +1,10 @@
 import 'package:adaus/Router/ui/pages/router_page.dart';
+import 'package:adaus/Session/provider/session_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -54,11 +55,14 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return Sizer(
             builder: (context, orientation, deviceType) {
-              return GetMaterialApp(
-                defaultTransition: Transition.cupertino,
-                debugShowCheckedModeBanner: false,
-                title: 'Adaus',
-                home: RouterPage(),
+              return ChangeNotifierProvider.value(
+                value: SessionProvider(),
+                child: GetMaterialApp(
+                  defaultTransition: Transition.cupertino,
+                  debugShowCheckedModeBanner: false,
+                  title: 'Adaus',
+                  home: RouterPage(),
+                ),
               );
 
 
