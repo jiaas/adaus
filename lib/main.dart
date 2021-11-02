@@ -1,12 +1,12 @@
 import 'package:adaus/Router/ui/pages/router_page.dart';
 import 'package:adaus/Session/provider/session_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter/cupertino.dart';
 
 // Import the firebase_core plugin
 void main() {
@@ -64,12 +64,8 @@ class _AppState extends State<App> {
                   home: RouterPage(),
                 ),
               );
-
-
             },
           );
-
-
         }
 
         // Otherwise, show something whilst waiting for initialization to complete

@@ -1,4 +1,3 @@
-import 'package:adaus/Global/ui/components/image_component.dart';
 import 'package:adaus/Global/ui/components/text_component.dart';
 import 'package:adaus/Layout/ui/pages/layout_page.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
@@ -54,14 +53,16 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
               "Asegurate de que puedes recibir un SMS. Se aplican las tarifas de tu operador.",
               "s1.black",
             ),
-
             Padding(
               padding: EdgeInsets.symmetric(vertical: 4.0.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0.h, horizontal: 2.0.w),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 2.0.h,
+                      horizontal: 2.0.w,
+                    ),
                     child: SizedBox(
                       width: 15.0.w,
                       height: 7.0.h,
@@ -69,103 +70,140 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
                         autofocus: true,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
-                        style: TextStyle(fontSize: 30,
+                        style: TextStyle(
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'SF',),
+                          fontFamily: 'SF',
+                        ),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: UnderlineInputBorder(),
-                          prefix: SizedBox(width: 10,),
+                          prefix: SizedBox(
+                            width: 10,
+                          ),
                           counterText: "",
-                          prefixIconConstraints: BoxConstraints(minHeight: 30, minWidth: 50,),
+                          prefixIconConstraints: BoxConstraints(
+                            minHeight: 30,
+                            minWidth: 50,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0.h, horizontal: 2.0.w),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 2.0.h,
+                      horizontal: 2.0.w,
+                    ),
                     child: SizedBox(
                       width: 15.0.w,
                       height: 7.0.h,
-                      child: TextField(
+                      child: const TextField(
                         autofocus: true,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
-                        style: TextStyle(fontSize: 30,
+                        style: TextStyle(
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'SF',),
+                          fontFamily: 'SF',
+                        ),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: UnderlineInputBorder(),
-                          prefix: SizedBox(width: 10,),
+                          prefix: SizedBox(
+                            width: 10,
+                          ),
                           counterText: "",
-                          prefixIconConstraints: BoxConstraints(minHeight: 30, minWidth: 50,),
+                          prefixIconConstraints: BoxConstraints(
+                            minHeight: 30,
+                            minWidth: 50,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0.h, horizontal: 2.0.w),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 2.0.h,
+                      horizontal: 2.0.w,
+                    ),
                     child: SizedBox(
                       width: 15.0.w,
                       height: 7.0.h,
-                      child: TextField(
+                      child: const TextField(
                         autofocus: true,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
-                        style: TextStyle(fontSize: 30,
+                        style: TextStyle(
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'SF',),
+                          fontFamily: 'SF',
+                        ),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: UnderlineInputBorder(),
-                          prefix: SizedBox(width: 10,),
+                          prefix: SizedBox(
+                            width: 10,
+                          ),
                           counterText: "",
-                          prefixIconConstraints: BoxConstraints(minHeight: 30, minWidth: 50,),
+                          prefixIconConstraints: BoxConstraints(
+                            minHeight: 30,
+                            minWidth: 50,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0.h, horizontal: 2.0.w),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 2.0.h,
+                      horizontal: 2.0.w,
+                    ),
                     child: SizedBox(
                       width: 15.0.w,
                       height: 7.0.h,
-                      child: TextField(
+                      child: const TextField(
                         autofocus: true,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
-                        style: TextStyle(fontSize: 30,
+                        style: TextStyle(
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'SF',),
+                          fontFamily: 'SF',
+                        ),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: UnderlineInputBorder(),
-                          prefix: SizedBox(width: 10,),
+                          prefix: SizedBox(
+                            width: 10,
+                          ),
                           counterText: "",
-                          prefixIconConstraints: BoxConstraints(minHeight: 30, minWidth: 50,),
+                          prefixIconConstraints: BoxConstraints(
+                            minHeight: 30,
+                            minWidth: 50,
+                          ),
                         ),
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(vertical: 6.0.h),
+              padding: EdgeInsets.symmetric(vertical: 6.0.h),
               child: MaterialButton(
-
                 onPressed: () {
                   //Implement registration functionality.
                   Get.offAll(() => const LayoutPage());
                 },
                 color: const Color(0xFF0769f8),
-                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                ),
                 minWidth: 200.0,
                 height: 42.0,
                 child: customText(
@@ -178,15 +216,21 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
             RichText(
               text: TextSpan(
                 text: 'Al continuar aceptas los',
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2!
-                    .copyWith(fontSize: 1.5.h, fontFamily: 'SF',
-                    color: Colors.grey),
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                      fontSize: 1.5.h,
+                      fontFamily: 'SF',
+                      color: Colors.grey,
+                    ),
                 children: const <TextSpan>[
-                  TextSpan(text: ' Términos y condiciones de uso', style: TextStyle(decoration: TextDecoration.underline),),
+                  TextSpan(
+                    text: ' Términos y condiciones de uso',
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
                   TextSpan(text: ' y la'),
-                  TextSpan(text: ' Política de privacidad', style: TextStyle(decoration: TextDecoration.underline),),
+                  TextSpan(
+                    text: ' Política de privacidad',
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
                   TextSpan(text: ' de ADAUS.'),
                 ],
               ),
@@ -197,4 +241,3 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
     );
   }
 }
-

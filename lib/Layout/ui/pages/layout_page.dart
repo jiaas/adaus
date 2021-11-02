@@ -1,7 +1,5 @@
 import 'package:adaus/Session/provider/session_provider.dart';
-import 'package:adaus/Session/ui/pages/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class LayoutPage extends StatefulWidget {
@@ -14,32 +12,29 @@ class LayoutPage extends StatefulWidget {
 class _LayoutPageState extends State<LayoutPage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Bienvenido al Layout.'),
+              const Text('Bienvenido al Layout.'),
               SizedBox(
                 width: 180,
                 height: 60,
                 child: TextButton(
                   onPressed: () {
                     Provider.of<SessionProvider>(context, listen: false)
-                        .cerrarSesion()
-                        .then(Get.offAll(()=> const SignUpPage()));
+                        .cerrarSesion();
                   },
-                  child: Text(
+                  child: const Text(
                     'Cerrar Sesión',
                   ),
                 ),
               ),
             ],
           ),
-
         ],
       ),
     );

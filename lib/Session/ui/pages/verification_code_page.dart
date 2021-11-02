@@ -1,7 +1,6 @@
 import 'package:adaus/Global/ui/components/text_component.dart';
 import 'package:adaus/Layout/ui/pages/layout_page.dart';
 import 'package:adaus/Session/provider/session_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -12,7 +11,7 @@ final codigoSMSController = TextEditingController();
 
 class VerificationCodePage extends StatefulWidget {
   //final String numeroTelefono;
-  const VerificationCodePage();//this.numeroTelefono);
+  const VerificationCodePage(); //this.numeroTelefono);
 
   @override
   _VerificationCodePageState createState() => _VerificationCodePageState();
@@ -22,7 +21,6 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -31,16 +29,16 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
     super.dispose();
   }
 
-  showSnackBar(String msg, Color? color, BuildContext context) {
-    Scaffold.of(context).showSnackBar(
-      new SnackBar(
-        content: new Text(
+  void showSnackBar(String msg, Color? color, BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
           msg,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
-        duration: new Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         elevation: 3.0,
         backgroundColor: color,
@@ -52,33 +50,31 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Error Occured'),
+        title: const Text('Error Occured'),
         content: Text(message),
         actions: <Widget>[
-          FlatButton(
+          MaterialButton(
             onPressed: () {
               Navigator.of(ctx).pop();
             },
-            child: Text('OK!'),
+            child: const Text('OK!'),
           )
         ],
       ),
     );
   }
 
-  verifyOTP(BuildContext context){
+  void verifyOTP(BuildContext context) {
     try {
       Provider.of<SessionProvider>(context, listen: false)
-          .verificarOTP(codigoSMSController.text.toString())
+          .verificarOTP(codigoSMSController.text)
           .then((_) {
-        Get.offAll(()=> const LayoutPage());
+        Get.offAll(() => const LayoutPage());
       }).catchError((e) {
         String errorMsg = e.toString();
         if (e.toString().contains("ERROR_SESSION_EXPIRED")) {
           errorMsg = "Session expired, please resend OTP!";
-        } else if (e
-            .toString()
-            .contains("ERROR_INVALID_VERIFICATION_CODE")) {
+        } else if (e.toString().contains("ERROR_INVALID_VERIFICATION_CODE")) {
           errorMsg = "You have entered wrong OTP!";
         }
         _showErrorDialog(context, errorMsg);
@@ -118,7 +114,9 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: 2.0.h, horizontal: 2.0.w),
+                      vertical: 2.0.h,
+                      horizontal: 2.0.w,
+                    ),
                     child: SizedBox(
                       width: 80.0.w,
                       height: 7.0.h,
@@ -148,7 +146,6 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -156,12 +153,13 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
               padding: EdgeInsets.symmetric(vertical: 6.0.h),
               child: MaterialButton(
                 onPressed: () async {
-                   //await _verificarSMS(context, //widget.numeroTelefono);
+                  //await _verificarSMS(context, //widget.numeroTelefono);
                   verifyOTP(context);
                 },
                 color: const Color(0xFF0769f8),
                 shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                ),
                 minWidth: 200.0,
                 height: 42.0,
                 child: customText(
@@ -175,7 +173,10 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
               text: TextSpan(
                 text: 'Al continuar aceptas los',
                 style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    fontSize: 1.5.h, fontFamily: 'SF', color: Colors.grey),
+                      fontSize: 1.5.h,
+                      fontFamily: 'SF',
+                      color: Colors.grey,
+                    ),
                 children: const <TextSpan>[
                   TextSpan(
                     text: ' Términos y condiciones de uso',
@@ -196,5 +197,3 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
     );
   }
 }
-
-
