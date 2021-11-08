@@ -23,9 +23,9 @@ class _OnboardingScreenState extends State<OnboardingScreen>
 
       FirebaseAuth.instance.authStateChanges().listen((User? user) async {
         if (user == null) {
-          await Get.off(() => const WelcomeScreen());
+          await Get.offAll(() => const WelcomeScreen());
         } else {
-          await Get.off(() => const LayoutScreen());
+          await Get.offAll(() => const LayoutScreen());
         }
       });
     } else {

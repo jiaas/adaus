@@ -12,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Bienvenido al Onboarding'),
+            const Text('Bienvenido de nuevo a Adaus'),
             SizedBox(
               width: 180,
               height: 60,

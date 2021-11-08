@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Account {
+class User {
   String? email;
   late String firstName;
   late bool hasRun;
@@ -10,7 +10,7 @@ class Account {
   String? passport;
   String? userRun;
 
-  Account({
+  User({
     this.email,
     required this.firstName,
     required this.hasRun,
@@ -21,7 +21,7 @@ class Account {
     this.userRun,
   });
 
-  Account.fromJsonMap(Map<String, dynamic> json) {
+  User.fromJsonMap(Map<String, dynamic> json) {
     email = json['email'].toString();
     firstName = json['firstName'].toString();
     hasRun =
