@@ -1,5 +1,5 @@
-import 'package:adaus/Session/ui/pages/signup_page.dart';
-import 'package:adaus/Session/ui/pages/verification_code_page.dart';
+import 'package:adaus/Session/ui/screens/auth_screen.dart';
+import 'package:adaus/Session/ui/screens/verification_code_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -7,16 +7,19 @@ import 'package:get/get.dart';
 class SessionProvider extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   String? idVerificacion;
-  String? numeroTelefono = '+56 9 92900357';
+  String? numeroTelefono;
   String? codigoSMS;
+  String? otp;
   User? user = FirebaseAuth.instance.currentUser;
 
-  void actualizarNumeroTelefono(String nuevoNumeroTelefono) {
-    numeroTelefono = nuevoNumeroTelefono;
+  actualizarNumeroTelefono(String nuevoNumeroTelefono) {
+    print("Se remplazó el número $numeroTelefono");
+    numeroTelefono = "+56 $nuevoNumeroTelefono";
+    print("Por el número $numeroTelefono");
     notifyListeners();
   }
 
-  void actualizarCodigoSMS(String nuevoCodigoSMS) {
+  actualizarCodigoSMS(String nuevoCodigoSMS) {
     codigoSMS = nuevoCodigoSMS;
     notifyListeners();
   }
@@ -36,7 +39,7 @@ class SessionProvider extends ChangeNotifier {
         }
       }
     } else {
-      Get.to(() => const VerificationCodePage());
+      Get.to(() => const VerificationCodeScreen());
     }
   }
 
@@ -49,7 +52,6 @@ class SessionProvider extends ChangeNotifier {
   void _onCodeSent(String verificationId, int? forceResendingToken) {
     print("code sent");
     idVerificacion = verificationId;
-    //Get.to(VerificationCodePage());
   }
 
   void _onCodeTimeout(String timeout) {
@@ -57,13 +59,14 @@ class SessionProvider extends ChangeNotifier {
     //return null;
   }
 
-  Future<void> verificarOTP(String otp) async {
-    print(otp);
-    print(idVerificacion);
+  Future<void> verificarOTP(String smsCode) async {
+    actualizarCodigoSMS(smsCode);
+    print("OTP: $otp \n Numero Teléfono: $numeroTelefono");
+
     try {
       final AuthCredential credential = PhoneAuthProvider.credential(
         verificationId: idVerificacion.toString(),
-        smsCode: otp,
+        smsCode: smsCode,
       );
 
       await _auth.signInWithCredential(credential);
@@ -75,7 +78,10 @@ class SessionProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> verificarTelefono() async {
+  verificarTelefono(String nuevoNumeroTelefono) async {
+    actualizarNumeroTelefono(nuevoNumeroTelefono);
+
+    print("OTP: $otp \n Numero Teléfono: $numeroTelefono");
     if (numeroTelefono != null) {
       await _auth.verifyPhoneNumber(
         phoneNumber: numeroTelefono.toString(),
@@ -89,6 +95,6 @@ class SessionProvider extends ChangeNotifier {
 
   Future<void> cerrarSesion() async {
     await _auth.signOut();
-    Get.offAll(() => const SignUpPage());
+    Get.offAll(() => const AuthScreen());
   }
 }

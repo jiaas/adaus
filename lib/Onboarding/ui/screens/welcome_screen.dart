@@ -1,15 +1,10 @@
-import 'package:adaus/Session/ui/pages/signup_page.dart';
+import 'package:adaus/Session/ui/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({Key? key}) : super(key: key);
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
-  @override
-  _OnboardingPageState createState() => _OnboardingPageState();
-}
-
-class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +18,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
               height: 60,
               child: TextButton(
                 onPressed: () {
-                  Get.off(() => const SignUpPage());
+                  Get.off(() => const AuthScreen());
                 },
                 child: const Center(
                   child: Text(
-                    'Inicia la aplicación.',
+                    'Inicia Sesión o Registrate',
                   ),
                 ),
               ),

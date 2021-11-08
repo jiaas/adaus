@@ -1,5 +1,5 @@
 import 'package:adaus/Global/ui/components/text_component.dart';
-import 'package:adaus/Layout/ui/pages/layout_page.dart';
+import 'package:adaus/Layout/ui/screens/layout_screen.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -198,7 +198,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
               child: MaterialButton(
                 onPressed: () {
                   //Implement registration functionality.
-                  Get.offAll(() => const LayoutPage());
+                  Get.offAll(() => const LayoutScreen());
                 },
                 color: const Color(0xFF0769f8),
                 shape: const RoundedRectangleBorder(

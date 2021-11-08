@@ -1,5 +1,5 @@
+import 'package:adaus/Dashboard/ui/pages/dashboard_page.dart';
 import 'package:adaus/Global/ui/components/text_component.dart';
-import 'package:adaus/Layout/ui/pages/layout_page.dart';
 import 'package:adaus/Session/provider/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,15 +9,15 @@ import 'package:sizer/sizer.dart';
 
 final codigoSMSController = TextEditingController();
 
-class VerificationCodePage extends StatefulWidget {
+class VerificationCodeScreen extends StatefulWidget {
   //final String numeroTelefono;
-  const VerificationCodePage(); //this.numeroTelefono);
+  const VerificationCodeScreen(); //this.numeroTelefono);
 
   @override
-  _VerificationCodePageState createState() => _VerificationCodePageState();
+  _VerificationCodeScreenState createState() => _VerificationCodeScreenState();
 }
 
-class _VerificationCodePageState extends State<VerificationCodePage> {
+class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   @override
   void initState() {
     super.initState();
@@ -69,7 +69,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
       Provider.of<SessionProvider>(context, listen: false)
           .verificarOTP(codigoSMSController.text)
           .then((_) {
-        Get.offAll(() => const LayoutPage());
+        Get.offAll(() => GetUserName('+56 9 9290 0357'));
       }).catchError((e) {
         String errorMsg = e.toString();
         if (e.toString().contains("ERROR_SESSION_EXPIRED")) {

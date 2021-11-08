@@ -1,7 +1,7 @@
 import 'package:adaus/Global/ui/components/image_component.dart';
 import 'package:adaus/Global/ui/components/text_component.dart';
 import 'package:adaus/Session/provider/session_provider.dart';
-import 'package:adaus/Session/ui/pages/verification_code_page.dart';
+import 'package:adaus/Session/ui/screens/verification_code_screen.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +10,14 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _AuthScreenState createState() => _AuthScreenState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _AuthScreenState extends State<AuthScreen> {
   late bool isLoading = false;
   String? verificationId;
   final numeroTelefonoController = MaskedTextController(mask: '0 0000 0000');
@@ -70,12 +70,12 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void verifyPhone(BuildContext context) {
+  void verifyPhone(BuildContext context, String numeroTelefono) {
     try {
       Provider.of<SessionProvider>(context, listen: false)
-          .verificarTelefono()
+          .verificarTelefono(numeroTelefono)
           .then((value) {
-        Get.to(() => const VerificationCodePage());
+        Get.to(() => const VerificationCodeScreen());
       }).catchError((e) {
         String errorMsg = 'Cant Authenticate you, Try Again Later';
         if (e.toString().contains(
@@ -209,7 +209,7 @@ class _SignUpPageState extends State<SignUpPage> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: MaterialButton(
                 onPressed: () async {
-                  verifyPhone(context);
+                  verifyPhone(context, numeroTelefonoController.text);
                 },
                 color: const Color(0xFF0769f8),
                 shape: const RoundedRectangleBorder(

@@ -2,14 +2,14 @@ import 'package:adaus/Session/provider/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LayoutPage extends StatefulWidget {
-  const LayoutPage({Key? key}) : super(key: key);
+class LayoutScreen extends StatefulWidget {
+  const LayoutScreen({Key? key}) : super(key: key);
 
   @override
-  _LayoutPageState createState() => _LayoutPageState();
+  _LayoutScreenState createState() => _LayoutScreenState();
 }
 
-class _LayoutPageState extends State<LayoutPage> {
+class _LayoutScreenState extends State<LayoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,4 @@
-import 'package:adaus/Router/ui/pages/router_page.dart';
+import 'package:adaus/Onboarding/ui/screens/onboarding_screen.dart';
 import 'package:adaus/Session/provider/session_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,7 +61,7 @@ class _AppState extends State<App> {
                   defaultTransition: Transition.cupertino,
                   debugShowCheckedModeBanner: false,
                   title: 'Adaus',
-                  home: RouterPage(),
+                  home: OnboardingScreen(),
                 ),
               );
             },
